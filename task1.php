@@ -18,9 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             "b", "n", "m", "@",  "$", "%", "^", "&",  "*", "(", ")", "_",  "-", "+", "=", "{",
             "}", ":", ";", "?");
         foreach ($a as $value) {
-            if (in_array($value, $txt)) {
-                $result = "В списке есть нечисловое значение. Выполнить расчет невозможно";
-                break;
+            for ($i = 0; $i < mb_strlen($value); $i++) {
+                $char = mb_substr($value, $i, 1);
+                if (in_array($char, $txt)) {
+                    $result = "В списке есть нечисловое значение. Выполнить расчет невозможно";
+                    break;
+                }
             }
         }
         if(!$result) {
