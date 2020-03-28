@@ -1,9 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    //получаем результаты из формы
+    //получаем результаты из формы, удаляя возможные пробелы
     $resulttext = "Результат:";
-    $a = explode(',', $_POST['values']);
+    $formval = preg_replace('/\s+/', '', $_POST['values']);
+    $a = explode(',', $formval);
     $n = count($a);
     if ($n==1) {
         // отсекаем сценарий, когда введено одно число
