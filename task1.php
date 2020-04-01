@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $pattern = '#^[0-9]+$#';
         foreach ($a as $value) {
             if(!preg_match($pattern, $value)) {
-                echo $value;
                 $result = "В списке есть нечисловые\пустые значения. Выполнить расчет невозможно";
+                break;
             }
         }
         // если в массиве лишь числа, то приступаем к решению задачи
